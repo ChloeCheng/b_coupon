@@ -1,0 +1,70 @@
+
+.audit-info{
+
+}
+.audit-info-title{
+    font-size:32rpx;
+    color:#666;
+    display: block;
+    text-align: center;
+    padding: 40rpx 0;
+}
+
+.audit-info-block{
+    background: #fff;
+}
+.audit-info-block-margin-top{
+    margin-top: 40rpx;
+}
+.audit-info-row{
+    display: flex;
+    height: 98rpx;
+    border-bottom: 1rpx solid #ececec;
+    align-items: center;
+    justify-content: center;
+    color: #222;
+    font-size: 32rpx;
+    padding: 0 20rpx 0 0;
+    margin-left: 40rpx;
+}
+
+.audit-info-row-label{
+    color: #222;
+    font-size: 32rpx;
+}
+
+.audit-info-row-input{
+    margin-left: 20rpx; 
+    flex: 1;
+    color: #222;
+    font-size: 32rpx;
+}
+
+.audit-btn{
+    height: 88rpx;
+    line-height: 88rpx;
+    border-radius: 10rpx;
+    bottom: 0rpx;
+    text-align: center;
+    color: #fff;
+    font-size: 36rpx;
+    background: #fb3063;
+    margin: 10rpx 30rpx 0 30rpx;
+}
+
+.audit-ing{
+   padding: 120rpx 20rpx 0;
+}
+.audit-ing-title{
+    font-size:36rpx;
+    color:#666;
+    display: block;
+    text-align: center;
+}
+.audit-ing-desc{
+    margin-top: 30rpx;
+    font-size:30rpx;
+    color:#888;
+    display: block;
+    text-align: center;
+}

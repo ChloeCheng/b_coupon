@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "券库",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "union-swiper-tab": "../../components/union-swiper-tab/union-swiper-tab",
+    "item": "../../components/item/item",
+    "dialog": "../../../components/dialog/dialog"
+  }
+}

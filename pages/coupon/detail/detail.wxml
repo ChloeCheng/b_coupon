@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<view class="container">
+   <image class="coupon-image" src="/assets/icons/WechatIMG12742.png" mode="widthFix"></image>
+   
+   <view class="coupon-detail">
+      <text class="coupon-title">洗车10元券</text>
+      <view class="coupon-desc-item">
+         <text>有效期：</text>
+         <text>2018/08/23</text>
+      </view>
+   </view>
+  
+</view>
+
+

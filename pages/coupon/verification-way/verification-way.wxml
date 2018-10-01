@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<view class="container">
+
+    <image class="img" src="/assets/icons/verification.png" mode='widthFix'></image>
+    <text class="verification-tip">核销优惠券</text>
+
+    <view class="scan-code-btn" bindtap="handleScanCode">
+       扫码核销
+    </view>
+    <view class="input-code-btn" bindtap="gotoVerification">
+       手动输入
+    </view>
+</view>
+
+

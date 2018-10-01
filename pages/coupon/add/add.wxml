@@ -1,0 +1,8 @@
+<!--index.wxml-->
+<view class="container">
+    <text class="add-tip">输入领取码领优惠券</text>
+    <input class="add-input" placeholder="输入领取码" focus="true" bindconfirm="bindconfirm" bindinput="searchInput" value="{{keyword}}" />
+    <view class="add-btn">立即领取</view>
+</view>
+
+

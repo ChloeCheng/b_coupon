@@ -1,0 +1,8 @@
+<!--index.wxml-->
+<view class="container">
+    <text class="add-tip">输入券码核销</text>
+    <input class="add-input" placeholder="输入优惠券号码" focus="true" bindinput="searchInput" value="{{keyword}}" />
+    <view class="add-btn {{keyword.length>0? '' : 'disable'}}">立即核销</view>
+</view>
+
+

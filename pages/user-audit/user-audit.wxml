@@ -1,0 +1,34 @@
+<view>
+    <view class="audit-info" wx:if="{{!auditing}}">
+       <text class="audit-info-title">我们需要先对您的身份进行审核</text>
+      
+      <view class="audit-info-block">
+        <view class="audit-info-row">
+            <label class="audit-info-row-label">商家名称</label>
+            <input class="audit-info-row-input"/>
+        </view>
+         <view class="audit-info-row">
+            <label class="audit-info-row-label">商家地址</label>
+            <input class="audit-info-row-input"/>
+        </view>
+      </view> 
+
+      <view class="audit-info-block audit-info-block-margin-top">
+        <view class="audit-info-row">
+            <label class="audit-info-row-label">联系人名称</label>
+            <input class="audit-info-row-input"/>
+        </view>
+         <view class="audit-info-row">
+            <label class="audit-info-row-label">联系电话</label>
+            <input class="audit-info-row-input"/>
+        </view>
+      </view> 
+      <view class="audit-btn">提交审核</view>
+    </view>
+
+    <view class="audit-ing" wx:if="{{auditing}}">
+       <text class="audit-ing-title">信息审核中</text>
+       <text class="audit-ing-desc">我们正在紧急审核您的信息，请耐心等待</text>
+    </view>
+
+</view>

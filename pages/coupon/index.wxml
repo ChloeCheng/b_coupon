@@ -1,0 +1,23 @@
+<!--index.wxml-->
+<view class="container">
+   <view class="coupon-detail">
+        <text class="coupon-type">汽车美容</text>
+        <text class="coupon-title">洗车10元券</text>
+        <view class="get-coupon">领取</view>
+        <view class="use-coupon"  wx:if="{{getBtn}}" bindtap="gotoCode">立即使用</view>
+        <view class="coupon-use-time">
+           <text>可用时间：</text>
+           <text class="coupon-use-time-desc">
+              2018.08.22-2018.08.30，周一至周日 10:30-24:00
+           </text>
+        </view>
+        <image class="coupon-image" src="/assets/icons/WechatIMG12742.png" mode="widthFix"></image>
+        <view class="coupon-detail-text" bindtap="gotoDetail">
+            <text>查看此优惠券详情</text>
+            <view class="iconfont icon-left"></view>
+        </view>
+   </view>
+ 
+</view>
+
+

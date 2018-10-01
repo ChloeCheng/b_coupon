@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<view class="container">
+   <view class="coupon-detail">
+        <text class="coupon-type">汽车美容</text>
+        <text class="coupon-title">洗车10元券</text>
+        <view class="coupon-line">
+         <text></text>
+        </view>
+        <image class="coupon-image" src="/assets/icons/add_coupon.png" mode="widthFix"></image>
+        
+   </view>
+ 
+</view>
+
+

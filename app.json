@@ -1,0 +1,18 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/coupon/index",
+    "pages/coupon/code/code",
+    "pages/coupon/add/add",
+    "pages/coupon/verification/verification",
+    "pages/coupon/verification-way/verification-way",
+    "pages/coupon/detail/detail",
+    "pages/user-audit/user-audit"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  }
+}

@@ -1,0 +1,9 @@
+<!--pages/shopstore/shop-tab/union-tab.wxml-->
+<view class="union-tab {{customClass}}">
+    <view class="tab-wrap" style="padding: 0 {{padding}}rpx">
+        <view wx:for="{{tabs}}" wx:key="{{item.id}}" class="tab-item {{index===selectedTabIndex ? 'active': ''}}" bind:tap="handleTabTap" data-tab-index="{{index}}">
+            <text>{{item.name}}</text>
+        </view>
+    </view>
+    <view class="tab-slug" style="transform: translateX({{slugTranslate}}rpx); width: {{slugWidth}}rpx"></view>
+</view>

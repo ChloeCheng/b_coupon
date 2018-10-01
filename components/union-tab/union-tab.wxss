@@ -1,0 +1,59 @@
+/* pages/shopstore/shop-tab/union-tab.wxss */
+.union-tab{
+    position: relative;
+}
+
+.union-tab .tab-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1rpx solid #dddddd;
+    background: #ffffff;
+}
+
+.union-tab .tab-item{
+    font-size: 28rpx;
+    color: #666;
+    text-align: center;
+    transition: all 0.3s;
+    flex-grow: 1;
+}
+
+.union-tab .tab-item text{
+    line-height: 79rpx;
+    display: inline-block;
+    position: relative;
+}
+
+.union-tab .tab-item.active{
+    color: #222222;
+    font-weight:700;
+}
+
+.union-tab .tab-slug{
+    position: absolute;
+    top: 67rpx;
+    left: 0;
+    height: 6rpx;
+    border-radius: 6rpx;
+    background: #fe2b60;
+    transition: all 0.3s;
+}
+
+.union-tab.second-style .tab-slug{
+    display: none;
+}
+.union-tab.second-style .tab-item.active{
+    color: #fe2b60;
+    font-weight:700;
+}
+.union-tab.second-style .tab-item.active text:after{
+    content: "";
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 6rpx;
+    background: #fe2b60;
+    border-radius: 6rpx;
+}

@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "union-tab": "../union-tab/union-tab"
+  }
+}

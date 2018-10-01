@@ -1,0 +1,27 @@
+<!--components/union-swiper-tab/union-swiper-tab.wxml-->
+<view class="union-swiper-tab" class="{{marginStyle ? 'union-swiper-tab-margin':''}}">
+    <view class="tab-wrapper">
+        <view class="tab-inner {{tabFixed ? 'fixed' : ''}}">
+            <union-tab class="union-tab" tabs="{{tabs}}" selectedTabIndex="{{activeTabIndex}}" padding="{{tabPadding}}" customClass="{{tabCustomClass}}" bind:input="handleTabInput"></union-tab>
+        </view>
+    </view>
+    <!--<view class="union-swiper-tab-item" wx:for="{{tabs}}" wx:key="item.id" hidden="{{index!==activeTabIndex}}">-->
+        <!--<slot name="tab-item-{{item.id}}"></slot>-->
+    <!--</view>-->
+    <swiper current="{{activeTabIndex}}" bind:change="handleSwiperChange" style="height: {{swiperHeight}}px">
+        <swiper-item wx:for="{{tabs}}" wx:key="{{item.id}}">
+            <view class="union-swiper-tab-item">
+                <slot name="tab-item-{{item.id}}"></slot>
+                <view wx:if="{{!item.isEnd}}" class="loading-text">
+                    <image src="http://ms.vpimg1.com/upload/actpics/cps/0/2018/05/21/109/q47xstax5wp4l2q.gif" mode="aspectFill"></image>
+                    努力加载中...
+                </view>
+                <view wx:if="{{item.isEnd && (item.data.length===0 && (!item.expiredData || item.expiredData.length===0))}}" class="refresh">
+                    <image src="https://a.vpimg3.com/upload/vtd/creatives/20180515/imageuploadrandom/1526382940441.png" mode="aspectFill"></image>
+                    <text>{{item.emptyText || '亲，暂无数据哦'}}</text>
+                    <!--<button class="button" bind:tap="handleRefreshTap">刷新</button>-->
+                </view>
+            </view>
+        </swiper-item>
+    </swiper>
+</view>

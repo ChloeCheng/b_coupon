@@ -1,0 +1,31 @@
+<template name="couponItem">
+   <view class="coupon-item">
+      <view class="coupon-item-l-1">
+        <view class="coupon-item-left">
+            <view class="coupon-item-r-1">
+                <view class="coupon-item-r-1-price">¥
+                    <text>{{item.amount}}</text>
+                </view>
+                <view class="coupon-item-r-1-desc">
+                    <text wx:if="{{item.showType === 1}}" class="coupon-item-r-1-desc-useCondition">{{item.useCondition}}</text>
+                    <text wx:if="{{item.showType === 2}}" class="coupon-item-r-1-desc-useCondition">共{{item.couponNum}}种券</text>
+                    <text wx:if="{{item.showType === 1}}">{{item.couponField}} | {{item.name}}</text>
+                    <text wx:if="{{item.showType === 2}}">{{item.name}}</text>  
+                </view>
+            </view>
+        </view>
+        <!--image class='coupon-item-line' src='/assets/icons/coupon-gap.png' mode='widthFix'></image-->
+        <view class="coupon-item-right {{item.leftNum==0 ? 'disable-share' :''}}">
+            <text>剩余{{item.leftNum}}张</text>
+            <view wx:if="{{item.leftNum==0}}" class="coupon-item-right-share">
+               已抢光
+            </view>
+            <view  wx:if="{{item.leftNum > 0}}" class="coupon-item-right-share" bindtap="shareCoupon" data-item="{{item}}">领取</view>
+        </view>
+      </view>
+       <view class="coupon-item-r-2">
+           <view class="iconfont icon-exclamation_point"></view>
+           <text>{{item.proReason}}</text>
+       </view>
+   </view>
+</template>  

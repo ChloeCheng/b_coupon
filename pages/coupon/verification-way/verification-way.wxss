@@ -1,0 +1,46 @@
+/**index.wxss**/
+page{
+  background: #fff;
+}
+.container{
+  padding: 80rpx 40rpx 0 40rpx; 
+}
+
+.img{
+  width:240rpx;
+  height:240rpx;
+  margin:0 auto;
+  display:block;
+}
+.verification-tip{
+  color:#222;
+  font-size: 32rpx;
+  display: block;
+  text-align: center;
+  margin: 20rpx 0 100rpx 0;
+}
+
+.scan-code-btn{
+  color: #fff;
+  background: #fe2b60;
+  width: 620rpx;
+  height:110rpx;
+  line-height: 110rpx;
+  font-size: 34rpx;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 110rpx;
+}
+
+.input-code-btn{
+  background: #fff;
+  color:#999;
+  width: 620rpx;
+  height:110rpx;
+  line-height: 110rpx;
+  font-size: 34rpx;
+  margin: 40rpx auto 0 auto;
+  text-align: center;
+  border-radius: 110rpx;
+  border: 1rpx solid #cecece;
+}

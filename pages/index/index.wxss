@@ -1,0 +1,154 @@
+/**index.wxss**/
+@import "../../template/item/item.wxss";
+image{ display: block; }
+/* -------  搜索栏  -------*/
+.u-search-classify {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    padding: 12rpx 30rpx 12rpx 30rpx;
+    background: #ffffff;
+    height: 88rpx;
+    box-sizing: border-box;
+    align-items: center;
+}
+.u-search-classify .navigator-hover {
+    background-color: #f3f3f3;
+    opacity: 1;
+}
+.u-search {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    padding-left: 16rpx;
+    margin-right: 10rpx;
+    width: 620rpx;
+    height: 64rpx;
+    background: #e8e8e8;
+    text-align: center;
+    border-radius: 10rpx;
+    box-sizing: border-box;
+}
+.u-search text {
+    margin-left: 16rpx;
+    font-size: 26rpx;
+    font-weight: 500;
+    color: #aaaaaa;
+} 
+
+
+.box-item{
+  padding: 0 20rpx;
+}
+
+.add-coupon-icon{
+  margin:0 20rpx 0 40rpx;
+
+}
+.add-coupon-icon image{
+    width: 48rpx;
+    height:48rpx;
+}
+
+
+.pick-block{
+    display: flex;
+    align-items: center;
+   justify-content: center;
+    height: 96rpx;
+    line-height: 96rpx;
+    font-size: 30rpx;
+    padding: 0 30rpx;
+    color:#666;
+    background: #fff;
+}
+
+.section{
+   flex: 1;
+}
+
+.section__title{
+    display: inline-block;
+}
+
+picker{
+    background-color: #e8e8e8;
+    border-radius: 10rpx;
+    display: inline-block;
+    color:#999;
+    width: 180rpx;
+    text-align: center;
+    height: 48rpx;
+    line-height: 48rpx;
+    font-size: 26rpx;
+}
+
+
+
+
+.loading-text{
+    font-size: 26rpx;
+    margin-top: 20rpx;
+    color: #666666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loading-text image{
+    width: 32rpx;
+    height: 32rpx;
+    display: inline-block;
+    margin-right: 10rpx;
+}
+
+.refresh{
+    font-size: 30rpx;
+    text-align: center;
+    margin-top: 100rpx;
+    margin-bottom: 100rpx;
+}
+
+.refresh text{
+    margin-top: 40rpx;
+    display: block;
+    color: #999;
+    font-size: 28rpx;
+}
+
+.refresh .button{
+    width: 200rpx;
+    height: 80rpx;
+    background: #ff5770;
+    color: white;
+    padding: 0;
+    font-size: 30rpx;
+    border: none;
+    display: inline-block;
+    line-height: 80rpx;
+    text-align: center;
+    border-radius: 5rpx;
+    margin-top: 20rpx;
+}
+.refresh image{
+    width: 158rpx;
+    height: 150rpx;
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+.verification-coupon{
+    position: fixed;
+    height: 108rpx;
+    line-height: 108rpx;
+    border-radius: 10rpx;
+    width: 100%;
+    bottom: 0rpx;
+    text-align: center;
+    color: #fff;
+    font-size: 46rpx;
+    background: #fc5f7c;
+  }

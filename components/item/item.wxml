@@ -1,0 +1,29 @@
+
+   <view class="coupon-item"  data-item="{{item}}">
+      <view class="coupon-item-l-1">
+        <view class="coupon-item-left">
+            <view class="coupon-item-r-1">
+                <view class="coupon-item-r-1-price">
+                    <text>{{item.childCouponItem}}</text>
+                    <!--image src="{{'https://z.mln.ren/upload/SmaImage' + item.couponImgURL}}" mode="aspectFit"></image-->
+                </view>
+                <view class="coupon-item-r-1-desc">
+                    <text class="coupon-item-r-1-desc-useCondition">{{item.couponName}}</text>
+                    <text>{{item.couponDesc}} | {{item.usedRange}}</text>  
+                </view>
+            </view>
+        </view>
+        <!--image class='coupon-item-line' src='/assets/icons/coupon-gap.png' mode='widthFix'></image-->
+        <view class="coupon-item-right {{item.circulation==0 ? 'disable-share' :''}}">
+            <text>剩余{{item.circulation}}张</text>
+            <view wx:if="{{item.circulation==0}}" class="coupon-item-right-share">
+               已抢光
+            </view>
+            <button open-type="share" data-share-data="{{wxShareData}}"  wx:if="{{item.circulation > 0}}" class="coupon-item-right-share" data-item="{{item}}">发券</button>
+        </view>
+      </view>
+       <view class="coupon-item-r-2">
+           <view class="iconfont icon-exclamation_point"></view>
+           <text>有效期：{{item.usefulEndTime}}</text>
+       </view>
+   </view>

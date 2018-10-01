@@ -1,0 +1,72 @@
+<!--index.wxml-->
+<dialog bind:info="updateInfo" hideDialog="{{hideDialog}}"></dialog>
+
+<view class="container">
+
+ <!-- 搜索分类 -->
+  <!--view class="u-search-classify">
+      <view
+          class="u-search "
+          bindtap="gotoSearchSuggest"
+      >
+            <icon type="search" size="12"></icon>
+           <text>搜索全部券</text>
+      </view>
+      <view class="add-coupon-icon" bindtap="gotoAddCoupon">
+         <image src="/assets/icons/add_coupon.png" mode='widthFix'></image>
+      </view>
+  </view-->
+
+    <!--union-swiper-tab tabs="{{tabs}}" bind:tabchange="handleTabChange" >
+        <view wx:for="{{tabs}}" wx:for-item="tab" wx:for-index="tabIndex" wx:key="{{tab.id}}" slot="tab-item-{{tab.id}}" class="box-item">
+            <block wx:for="{{list}}"  wx:key="index">
+              <item item="{{item}}"></item>
+            </block>
+        </view>      
+    </union-swiper-tab-->
+
+
+    <view class="pick-block">
+      <view class="section">
+        <view class="section__title">项目：</view>
+        <picker bindchange="bindPickerChangeForItem" value="{{itemArrayIndex}}" range="{{itemArray}}">
+            <view class="picker">
+             {{itemArray[itemArrayIndex]}}
+            </view>
+        </picker>
+      </view>
+      <!--view class="section">
+        <view class="section__title">分类：</view>
+        <picker bindchange="bindPickerChangeForType" value="{{typeArrayIndex}}" range="{{typeArray}}">
+            <view class="picker">
+             {{typeArray[typeArrayIndex]}}
+            </view>
+        </picker>
+      </view-->
+       <!--view class="add-coupon-icon" bindtap="gotoAddCoupon">
+         <image src="/assets/icons/add_coupon.png" mode='widthFix'></image>
+      </view-->
+    </view>
+
+      <view  class="box-item">
+        <block wx:for="{{list}}"  wx:key="{{item.id}}">
+            <item item="{{item}}"></item>
+        </block>
+         <view wx:if="{{!isEnd}}" class="loading-text">
+            <image src="http://ms.vpimg1.com/upload/actpics/cps/0/2018/05/21/109/q47xstax5wp4l2q.gif" mode="aspectFill"></image>
+            努力加载中...
+        </view>
+        <view wx:if="{{isEnd}}" class="loading-text">
+            亲，没有更多优惠券了～
+        </view>
+        <view wx:if="{{isEnd && (list.length===0)}}" class="refresh">
+            <image src="https://a.vpimg3.com/upload/vtd/creatives/20180515/imageuploadrandom/1526382940441.png" mode="aspectFill"></image>
+            <text>{{item.emptyText || '亲，暂无数据哦'}}</text>
+        </view>
+     </view>
+  <view class="verification-coupon" bindtap="gotoAddCoupon">
+      <text>核销优惠券</text>
+    </view>
+</view>
+
+

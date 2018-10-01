@@ -1,0 +1,76 @@
+/* components/union-swiper-tab/union-swiper-tab.wxss */
+.tab-wrapper{
+    height: 80rpx;
+}
+
+.tab-inner{
+    width: 100%;
+    z-index: 100;
+}
+
+.tab-inner.fixed{
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.loading-text{
+    font-size: 26rpx;
+    margin-top: 20rpx;
+    color: #666666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loading-text image{
+    width: 32rpx;
+    height: 32rpx;
+    display: inline-block;
+    margin-right: 10rpx;
+}
+
+.refresh{
+    font-size: 30rpx;
+    text-align: center;
+    margin-top: 100rpx;
+    margin-bottom: 100rpx;
+}
+
+.refresh text{
+    margin-top: 40rpx;
+    display: block;
+    color: #999;
+    font-size: 28rpx;
+}
+
+.refresh .button{
+    width: 200rpx;
+    height: 80rpx;
+    background: #ff5770;
+    color: white;
+    padding: 0;
+    font-size: 30rpx;
+    border: none;
+    display: inline-block;
+    line-height: 80rpx;
+    text-align: center;
+    border-radius: 5rpx;
+    margin-top: 20rpx;
+}
+.refresh image{
+    width: 158rpx;
+    height: 150rpx;
+    display: block;
+    margin: 0 auto;
+}
+
+.union-swiper-tab-item{
+    padding-bottom:24rpx;
+}
+
+.union-swiper-tab-margin{
+   padding:0;
+}
+.union-swiper-tab-margin .union-swiper-tab-item{
+   padding:20rpx;
+}
