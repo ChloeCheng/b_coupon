@@ -1,11 +1,11 @@
 
-import ajax from '../../common/ajax.js';
-import URL from '../../common/api-list.js';
-const router = require('../../common/router.js');
-import {parseWeChatQuery} from '../../common/utils.js';
-import PageEventFire from '../../common/pageEventFire.js';
-import {autoLogin} from '../../common/login.js';
-import storage from '../../common/storage.js';
+import ajax from '../../../common/ajax.js';
+import URL from '../../../common/api-list.js';
+const router = require('../../../common/router.js');
+import {parseWeChatQuery} from '../../../common/utils.js';
+import PageEventFire from '../../../common/pageEventFire.js';
+import {autoLogin} from '../../../common/login.js';
+import storage from '../../../common/storage.js';
 Page({
 
     /**
@@ -17,7 +17,12 @@ Page({
         noData: false,
         dataResponse: false,
         list: [
-            
+            /*{
+                couponName: "法拉利专用洗车券",
+                id: "0ffbd3ea-6e44-41d8-b040-6f7df801f424",
+                usedTime: "2018-10-12 00:00:00",
+                verificationName: 'coco'
+            }*/
         ],
         tabs: [
             {name: '全部',id: 'ALL', data: [], pageStart: 0, isEnd: false, loading: false},
@@ -78,13 +83,6 @@ Page({
         });
         // console.log(index)
     },
-    handleDoubtTap(){
-        wx.showModal({
-            content: '1、被邀请的好友自动加入你的团队成为你的队员\r\n2、队员每推广一单，您将额外获得此单收益的10%（您的等级越高，比例越高），队员的收益不受影响\r\n3、自2018年6月14日0点之后的订单才贡献团队收益',
-            showCancel: false
-        });
-    },
-
    /**
      * 洗车/保养/全部
      */
@@ -132,10 +130,10 @@ Page({
     },
 
     getList(pullDown){
-        let param = `?shopid=${storage.get('shopId')}&page=${this.data.page+1}&limit=20${this.data.itemArrayIndex > 0 ? ('&couponType=' + this.data.itemArray[this.data.itemArrayIndex]) : ''}`;
+        let param = `?shopId=${storage.get('shopId')}&page=${this.data.page+1}&limit=20`;
         wx.showLoading();
         let self = this;
-        return ajax.request((URL.index.list + param), {}, function(data){
+        return ajax.request((URL.verification.list + param), {}, function(data){
             wx.hideLoading();
             if(pullDown){
                 wx.stopPullDownRefresh();
@@ -146,13 +144,9 @@ Page({
                         isEnd: true
                     }); 
                 }
-                let list = data.data;
-                list.forEach(item=>{
-                    item.usefulEndTime = item.usefulEndTime.split(' ')[0]; // formatTime.formatTime(new Date(item.coupon.usefulEndTime));
-                });
                 self.setData({
                     page: self.data.page + 1,
-                    list: self.data.list.concat(list)
+                    list: self.data.list.concat(data.data)
                 });
                return self.data.list;
             }
@@ -195,15 +189,8 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-       this.setData({
-           hideDialog: getApp().globalData.authSettingUserInfo
-       })
-        autoLogin().then(data => {
-            if(data.login) {
-                this.getList();
-            }
-            
-        })
+        this.getList();
+        
     },
 
     /**

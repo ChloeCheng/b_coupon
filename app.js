@@ -41,6 +41,7 @@ App({
     configid: '69f2ec31-3fd1-4cbb-9763-51bbe59982ad',
     BConfigid: '89f2ec31-3fd1-4cbb-9763-51bbe59982ad',
     userInfo: {},
-    authSettingUserInfo: false
+    authSettingUserInfo: false,
+    regexPhone: /^1(3|4|5|6|7|8|9)\d{9}$/,  // 手机号码校验
   }
 })

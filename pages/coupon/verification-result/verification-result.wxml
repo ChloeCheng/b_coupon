@@ -1,0 +1,19 @@
+<!--index.wxml-->
+<view class="container">
+
+    <image class="img" src="/assets/icons/success.png" mode='widthFix'></image>
+    <text class="verification-tip">核销成功！</text>
+
+    <view class="scan-code-btn" bindtap="gotoVerificationWay">
+       继续核销
+    </view>
+    <view class="input-code-btn" bindtap="gotoHome">
+       返回券库
+    </view>
+
+    <view class="verification-entrance" bindtap="gotoVerificationList">
+       查看核销记录
+    </view>
+</view>
+
+

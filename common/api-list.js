@@ -1,6 +1,6 @@
 let URL = {
     index: {
-        list: 'https://z.mln.ren/api/coupon/list'  //api/coupon/front/ac/listbytype
+        list: 'https://z.mln.ren/api/coupon/front/ac/listbytype',
     },
     coupon: {
         detail: 'https://z.mln.ren/api/coupon/front/detail/',
@@ -13,7 +13,12 @@ let URL = {
         findunionid: 'https://z.mln.ren/api/wechat/findunionid'
     },
     customer: {
-        shop: 'https://z.mln.ren/api/shopAccount/front/add'
+        shop: 'https://z.mln.ren/api/shopAccount/front/add',
+        getAddress: 'https://z.mln.ren/api/waiterShop/front/shopdetail/'
+    },
+    verification: {
+        code: 'https://z.mln.ren/api/couponGiveOutRecord/front/usecouponrecord',
+        list: 'https://z.mln.ren/api/couponGiveOutRecord/front/shopcouponrecord',
     }
 }
 

@@ -56,7 +56,7 @@
             <image src="http://ms.vpimg1.com/upload/actpics/cps/0/2018/05/21/109/q47xstax5wp4l2q.gif" mode="aspectFill"></image>
             努力加载中...
         </view>
-        <view wx:if="{{isEnd}}" class="loading-text">
+        <view wx:if="{{isEnd && (list.length > 0)}}" class="loading-text">
             亲，没有更多优惠券了～
         </view>
         <view wx:if="{{isEnd && (list.length===0)}}" class="refresh">

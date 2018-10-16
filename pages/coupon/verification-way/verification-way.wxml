@@ -10,6 +10,10 @@
     <view class="input-code-btn" bindtap="gotoVerification">
        手动输入
     </view>
+
+    <view class="verification-entrance" bindtap="gotoVerificationList">
+       查看核销记录
+    </view>
 </view>
 
 

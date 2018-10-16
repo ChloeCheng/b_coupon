@@ -33,12 +33,37 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
 					"name": "user-audit",
-					"pathName": "pages/user-audit/user-audit"
+					"pathName": "pages/user-audit/user-audit",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "detail",
+					"pathName": "pages/coupon/index",
+					"query": "id=f82d98a6-16c0-46d2-bbe5-8165021b8889"
+				},
+				{
+					"id": -1,
+					"name": "verification-way",
+					"pathName": "pages/coupon/verification-way/verification-way",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "verification-result",
+					"pathName": "pages/coupon/verification-result/verification-result",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "verification-list",
+					"pathName": "pages/coupon/verification-list/verification-list",
+					"query": ""
 				}
 			]
 		}

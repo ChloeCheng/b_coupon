@@ -1,0 +1,33 @@
+<!--index.wxml-->
+
+<view class="container">
+
+      <view  class="box-item">
+        <block wx:for="{{list}}"  wx:key="{{item.id}}">
+            <view class="item">
+               <view class="item-left">
+                  <text>{{item.expenseTime}}</text>
+                  <text>{{item.expenseShopAccountName}}</text>
+               </view>
+                <view class="item-right">
+                  <text class="item-title">{{item.coupon.couponName}}</text>
+                  <text class="item-id">{{item.recordCode}}</text>
+               </view>
+            </view>
+        </block>
+         <view wx:if="{{!isEnd}}" class="loading-text">
+            <image src="http://ms.vpimg1.com/upload/actpics/cps/0/2018/05/21/109/q47xstax5wp4l2q.gif" mode="aspectFill"></image>
+            努力加载中...
+        </view>
+        <view wx:if="{{isEnd && (list.length > 0)}}" class="loading-text">
+            亲，没有更多记录了～
+        </view>
+        <view wx:if="{{isEnd && (list.length===0)}}" class="refresh">
+            <image src="https://a.vpimg3.com/upload/vtd/creatives/20180515/imageuploadrandom/1526382940441.png" mode="aspectFill"></image>
+            <text>{{item.emptyText || '亲，暂无记录哦'}}</text>
+        </view>
+     </view>
+  
+</view>
+
+

@@ -1,7 +1,6 @@
 
 import ajax from '../../common/ajax.js';
 import URL from '../../common/api-list.js';
-import {getUCode} from "../../union-api/union-auth.js";
 const router = require('../../common/router.js');
 import {parseWeChatQuery} from '../../common/utils.js';
 import PageEventFire from '../../common/pageEventFire.js';
@@ -99,9 +98,14 @@ Page({
             wx.hideLoading();
     
             if(data.isSuccess === true){
+                let obj = data.data;
+                obj.usefulStartTime = obj.usefulStartTime.split(' ')[0]; //formatTime.formatTime(new Date(obj.usefulStartTime));
+                obj.usefulEndTime = obj.usefulEndTime.split(' ')[0]; //formatTime.formatTime(new Date(obj.usefulEndTime));
+
                 self.setData({
-                    couponObj: data.data
+                    couponObj: obj
                 });
+
                
             }
            
@@ -122,17 +126,21 @@ Page({
         this.setData({
             useBtn: (query.use === 'true' ? true : false)
         })
-
-        autoLogin().then(data => {
+        this.getDetail(query.id);
+        /* autoLogin().then(data => {
             if(data.login) {
                 this.getDetail(query.id);
             }
-        })
+        })*/
        
     },
 
     gotoDetail(){
         router.routeTo('/pages/coupon/detail/detail');
+    },
+
+    gotoCPort(){
+
     },
 
     gotoCode(){

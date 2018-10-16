@@ -4,26 +4,26 @@
       
       <view class="audit-info-block">
         <view class="audit-info-row">
-            <label class="audit-info-row-label">商家名称</label>
-            <input class="audit-info-row-input"/>
+            <label class="audit-info-row-label">商户编号</label>
+            <input class="audit-info-row-input"  bindinput="merchantCodeInput" value="{{merchantCode}}" bindblur="getAddressInfo"/>
         </view>
          <view class="audit-info-row">
             <label class="audit-info-row-label">商家地址</label>
-            <input class="audit-info-row-input"/>
+            <text class="audit-info-row-input"> {{address}}</text>
         </view>
       </view> 
 
       <view class="audit-info-block audit-info-block-margin-top">
         <view class="audit-info-row">
-            <label class="audit-info-row-label">联系人名称</label>
-            <input class="audit-info-row-input"/>
+            <label class="audit-info-row-label">申请人姓名</label>
+            <input class="audit-info-row-input" bindinput="nameInput" value="{{name}}"/>
         </view>
          <view class="audit-info-row">
-            <label class="audit-info-row-label">联系电话</label>
-            <input class="audit-info-row-input"/>
+            <label class="audit-info-row-label">手机号码</label>
+            <input class="audit-info-row-input" type="number" bindinput="mobileNumInput" value="{{mobileNum}}"/>
         </view>
       </view> 
-      <view class="audit-btn">提交审核</view>
+      <view class="audit-btn" bindtap="submitInfo">提交审核</view>
     </view>
 
     <view class="audit-ing" wx:if="{{auditing}}">

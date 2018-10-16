@@ -57,15 +57,15 @@
   min-width:164rpx;  
 }
 .coupon-item-r-1-price image{
-   width: 200rpx;
-   height: 200rpx;
+   width: 100rpx;
+   height: 100rpx;
 }
 .coupon-item-r-1-price text{
     font-size: 56rpx;
 }
 .coupon-item-r-1-desc{
     flex:1;
-    font-size:20rpx;
+    font-size:22rpx;
     padding-left:16rpx;
     color:#999;
     overflow:hidden;
@@ -75,10 +75,10 @@
     
 }
 .coupon-item-r-1-desc .coupon-item-r-1-desc-useCondition{
-    font-size:22rpx;
+    font-size:24rpx;
     display:block;
-    height:22rpx;
-    line-height:22rpx;
+    height:24rpx;
+    line-height:24rpx;
     color:#222;
     overflow:hidden;
     text-overflow:ellipsis;
@@ -130,4 +130,15 @@
 
 .coupon-item-right.disable-share  .coupon-item-right-share{
     background:#ddd;
+}
+
+.coupon-item-r-1-desc .coupon-item-r-1-desc-usedRange{
+    font-size:22rpx;
+    display:block;
+    
+    overflow:hidden;
+    text-overflow:ellipsis;
+    word-break:break-all;
+    white-space:nowrap;
+    margin-top: 6rpx;
 }

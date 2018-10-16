@@ -4,12 +4,18 @@
         <view class="coupon-item-left">
             <view class="coupon-item-r-1">
                 <view class="coupon-item-r-1-price">
-                    <text>{{item.childCouponItem}}</text>
-                    <!--image src="{{'https://z.mln.ren/upload/SmaImage' + item.couponImgURL}}" mode="aspectFit"></image-->
+                   
+                    <block wx:if="{{item.couponType === '免费券'}}">
+                      <image src="/assets/icons/free.png" mode="aspectFit"></image>
+                   </block>
+                   <block wx:else >
+                        ¥<text>{{item.settlementPrice}}</text>
+                   </block>
                 </view>
                 <view class="coupon-item-r-1-desc">
                     <text class="coupon-item-r-1-desc-useCondition">{{item.couponName}}</text>
-                    <text>{{item.couponDesc}} | {{item.usedRange}}</text>  
+                    <text>{{item.couponType}} | {{item.couponItem}}</text>  
+                    <text class="coupon-item-r-1-desc-usedRange">适用地区：{{item.usedRange}}</text> 
                 </view>
             </view>
         </view>

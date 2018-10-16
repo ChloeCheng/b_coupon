@@ -1,11 +1,9 @@
 
 import ajax from '../../../common/ajax.js';
-import URL from '../../../common/api-list.js';
 const router = require('../../../common/router.js');
 import {parseWeChatQuery} from '../../../common/utils.js';
 import PageEventFire from '../../../common/pageEventFire.js';
 import throttle from '../../../common/lodash.throttle.js';
-const storage = require('../../../common/storage.js')
 Page({
 
     /**
@@ -29,38 +27,16 @@ Page({
             }
         });
     },
-    handleScanCode(){
-
-        wx.scanCode({
-            success: (res) => {
-              console.log(res)
-              if(res.result){
-                ajax.request((URL.verification.code), { 
-                    ShopId: storage.get('shopId'),
-                    AccountId: storage.get('waiterId'),
-                    RecordCode: res.result
-                }, function(data){
-                    if(data.code === 0){
-                        router.routeTo('pages/coupon/verification-result/verification-result');
-                    } else {
-                        wx.showToast({
-                            title: '核销失败：没有发放此券',
-                            icon: 'none',
-                            duration: 1500
-                        });
-                    }
-                   
-                })
-              }
-            }
-        })
+    gotoVerificationWay(){
+       router.routeTo('pages/coupon/verification-way/verification-way');
     },
-    gotoVerification(){
-       router.routeTo('pages/coupon/verification/verification');
+    gotoHome(){
+       router.routeTo('pages/index/index');
     },
     gotoVerificationList(){
         router.routeTo('pages/coupon/verification-list/verification-list');
     },
+
     getInviteIncomeDetail(){
         API.get('income.inviteIncomeDetail').then(data=>{
             if(data && data.data){
@@ -85,15 +61,7 @@ Page({
             });
         }
     }, 500),
-     /**
-     * 点击：队员详情
-     */
-    onTeamMemberDetailTap (e) {
-        let {currentTarget:{dataset:{item}}} = e;
-        router.routeTo('fulishe/pages/special/special', {
-          url: encodeURIComponent('https://wxk.vip.com/team_member?userId=' + item.invitedUserId)
-        })
-    },
+ 
 
     /**
      * 生命周期函数--监听页面加载

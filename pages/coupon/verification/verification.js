@@ -1,9 +1,11 @@
 
 import ajax from '../../../common/ajax.js';
+import URL from '../../../common/api-list.js';
 const router = require('../../../common/router.js');
 import {parseWeChatQuery} from '../../../common/utils.js';
 import PageEventFire from '../../../common/pageEventFire.js';
 import throttle from '../../../common/lodash.throttle.js';
+const storage = require('../../../common/storage.js')
 Page({
 
     /**
@@ -37,24 +39,7 @@ Page({
         });
         // console.log(index)
     },
-    handleDoubtTap(){
-        wx.showModal({
-            content: '1、被邀请的好友自动加入你的团队成为你的队员\r\n2、队员每推广一单，您将额外获得此单收益的10%（您的等级越高，比例越高），队员的收益不受影响\r\n3、自2018年6月14日0点之后的订单才贡献团队收益',
-            showCancel: false
-        });
-    },
-
-    getInviteIncomeDetail(){
-        API.get('income.inviteIncomeDetail').then(data=>{
-            if(data && data.data){
-                this.setData({
-                    [`tabs[${this.data.activeTabIndex}].data`]: data.data,
-                    dataResponse: true,
-                    noData: data.data.length > 0 ? false : true
-                });
-            }
-        })
-    },
+    
     /**
      * 监听搜索输入
      */
@@ -68,13 +53,25 @@ Page({
             });
         }
     }, 500),
-     /**
-     * 点击：队员详情
-     */
-    onTeamMemberDetailTap (e) {
-        let {currentTarget:{dataset:{item}}} = e;
-        router.routeTo('fulishe/pages/special/special', {
-          url: encodeURIComponent('https://wxk.vip.com/team_member?userId=' + item.invitedUserId)
+    verificationCode(){
+        if(!this.data.keyword){
+            return
+        }
+        ajax.request((URL.verification.code), { 
+            ShopId: storage.get('shopId'),
+            AccountId: storage.get('waiterId'),
+            RecordCode: this.data.keyword
+        }, function(data){
+            if(data.code === 0){
+                router.routeTo('pages/coupon/verification-result/verification-result');
+            } else {
+                wx.showToast({
+                    title: '请输入正确的券号！',
+                    icon: 'none',
+                    duration: 1500
+                });
+            }
+           
         })
     },
 

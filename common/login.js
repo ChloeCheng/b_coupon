@@ -1,6 +1,7 @@
 
-const storage = require('./storage.js')
-const ajax = require('./ajax.js')
+const storage = require('./storage.js');
+const router = require('./router.js');
+const ajax = require('./ajax.js');
 import URL from './api-list.js';
 const getUrl = require('./getPageUrl.js')
 const dateFormat = require('./dateFormat.js')
@@ -10,7 +11,7 @@ var isLogining = false
 
 exports.autoLogin = function(){
   return new Promise(resolve=>{
-    if(!storage.get('openId') || !storage.get('userId')){
+    if(!storage.get('openId')){
       wx.getSetting({
         success(res) {
             if (res.authSetting['scope.userInfo']) {
@@ -44,18 +45,10 @@ exports.autoLogin = function(){
                                  
                                   storage.setSync('openId',  obj.resultObject.openId);
                                   storage.setSync('unionId',  obj.resultObject.unionId);
-  
-                                  ajax.request((URL.user.login), {
-                                    method: 'POST',
-                                    OpenId: storage.get('openId'),
-                                    UnionId: storage.get('unionId'),
-                                    WxName: app.globalData.userInfo.nickName,
-                                    WxHeadimgurl: app.globalData.userInfo.avatarUrl,
-                                    Gender: app.globalData.userInfo.gender
-                                  }, function(data){
-                                        storage.setSync('userId',  data.entity.id);
-                                        resolve({login: true});
+                                  loginAndgetAndit(function(){
+                                    resolve({login: true});
                                   })
+                                  
                                }
                           }
                         })
@@ -72,11 +65,53 @@ exports.autoLogin = function(){
             console.log('checkAuth fail!!!!')
         }
      })
-    } else {
-      resolve({login: true});
+     } else {
+
+      loginAndgetAndit(function(){
+        resolve({login: true});
+      })
     }
   });
   
+}
+
+function loginAndgetAndit(callback){
+  ajax.request((URL.user.login), {
+    method: 'POST',
+    OpenId: storage.get('openId'),
+    UnionId: storage.get('unionId'),
+    WxName: app.globalData.userInfo.nickName,
+    WxHeadimgurl: app.globalData.userInfo.avatarUrl,
+    Gender: app.globalData.userInfo.gender
+  }, function(data){
+        
+        if(data.code === 0) {
+          storage.setSync('userId',  data.entity.id);
+          storage.setSync('shopId',  (data.entity.shop && data.entity.shop.id) || '');
+          storage.setSync('waiterId',  (data.entity.shop && data.entity.shop.waiterId) || '');
+          let currentPage = getCurrentPages()[(getCurrentPages().length-1)];
+           if (data.entity.shopAccountStatus === 1 || data.entity.shopAccountStatus === 0){  //审核中
+            if (!currentPage.options.audit){
+              router.routeTo('pages/user-audit/user-audit?audit=1');
+            } else {
+             callback && callback()
+            }
+          } else if (data.entity.shopAccountStatus === 2){  //审核通过
+            if (currentPage.route !== 'pages/index/index'){
+              router.routeTo('pages/index/index');
+            } else {
+             callback && callback()
+            }
+          } else {  // -1没有提交审核，100审核失败
+            if (currentPage.route !== 'pages/user-audit/user-audit'){
+              router.routeTo('pages/user-audit/user-audit');
+            } else {
+             callback && callback()
+            }
+          }
+        }
+        // resolve({login: true});
+  })
 }
 
 // 入口统一是否登录判断

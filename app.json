@@ -6,6 +6,8 @@
     "pages/coupon/add/add",
     "pages/coupon/verification/verification",
     "pages/coupon/verification-way/verification-way",
+    "pages/coupon/verification-result/verification-result",
+    "pages/coupon/verification-list/verification-list",
     "pages/coupon/detail/detail",
     "pages/user-audit/user-audit"
   ],
