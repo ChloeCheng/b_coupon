@@ -31,7 +31,8 @@ Page({
         typeArray: ['全部', '免费券', '代金券', '减免券'],  //分类
         typeArrayIndex: 0,
         isEnd: false,
-        page: 0
+        page: 0,
+        newRoute: false
     },
     gotoSearchSuggest(){
       router.routeTo('/pages/search/search');
@@ -168,7 +169,13 @@ Page({
         // this.getServerConfig(); 
         let query = parseWeChatQuery(options)
         // wx.hideShareMenu();
-        
+        if(query && query.$route){
+            this.setData({
+                newRoute: true
+            })
+            const route = decodeURIComponent(query.$route);
+            router.routeTo(route); 
+        }
        
     },
 
@@ -198,19 +205,24 @@ Page({
        this.setData({
            hideDialog: getApp().globalData.authSettingUserInfo
        })
-        autoLogin().then(data => {
-            if(data.login) {
-                this.getList();
-            }
-            
-        })
+       if(!this.data.newRoute){
+            autoLogin().then(data => {
+                if(data.login) {
+                    this.getList();
+                }
+                
+            })
+       }
+       
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
+        this.setData({
+            newRoute: false
+        })
     },
 
     /**

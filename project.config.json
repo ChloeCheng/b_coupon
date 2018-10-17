@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 5,
 			"list": [
 				{
 					"id": -1,
@@ -64,6 +64,12 @@
 					"name": "verification-list",
 					"pathName": "pages/coupon/verification-list/verification-list",
 					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "skip",
+					"pathName": "pages/index/index",
+					"query": "$route=%2Fpages%2Fcoupon%2Findex%3Fid%3Dcec840a2-4642-4946-b7f1-07212f954a28"
 				}
 			]
 		}

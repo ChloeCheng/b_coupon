@@ -27,13 +27,13 @@ Component({
         // this.initTab();
 
         this.setData({
-            wxShareData: {
+            wxShareData: {  
                 title: this.data.item.couponDesc,
-                path: `/pages/coupon/index?id=${this.data.item.id}`,
+                path: '/pages/index/index?$route=' + encodeURIComponent(`/pages/coupon/index?id=${this.data.item.id}`),
                 imageUrl: `${getApp().globalData.imgHost}${this.data.item.couponImgURL}`
             }
         })
-        console.log(this.data.wxShareData)
+        // console.log(this.data.wxShareData)
     },
 
     /**
