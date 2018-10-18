@@ -37,7 +37,7 @@ Page({
               if(res.result){
                 ajax.request((URL.verification.code), { 
                     ShopId: storage.get('shopId'),
-                    AccountId: storage.get('waiterId'),
+                    AccountId: storage.get('userId'),
                     RecordCode: res.result
                 }, function(data){
                     if(data.code === 0){

@@ -21,7 +21,7 @@
         <view class="item-desc">
           <text>服务项目：{{couponObj.couponItem}}</text>
           <text>适用地区：{{couponObj.usedRange}}</text>
-          <text>优惠券介绍：{{couponObj.couponDesc}}</text>
+          <text>优惠券介绍：{{couponObj.expenseDesc}}</text>
         </view>
    </view>
  
