@@ -42,6 +42,12 @@ Page({
                 }, function(data){
                     if(data.code === 0){
                         router.routeTo('pages/coupon/verification-result/verification-result');
+                    } else if(data.code === 100004){
+                        wx.showToast({
+                            title: '该优惠券已经使用！',
+                            icon: 'none',
+                            duration: 1500
+                        });
                     } else {
                         wx.showToast({
                             title: '核销失败：没有发放此券',
