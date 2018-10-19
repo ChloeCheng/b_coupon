@@ -6,7 +6,7 @@ page{
 }
 
 .box-item{
-  padding: 0 20rpx;
+  padding: 0 20rpx 30rpx 20rpx;
 }
 
 .add-coupon-icon{

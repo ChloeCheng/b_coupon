@@ -134,8 +134,10 @@ Page({
 
     getList(pullDown){
         let param = `?shopid=${storage.get('shopId')}&page=${this.data.page+1}&limit=20${this.data.itemArrayIndex > 0 ? ('&couponType=' + this.data.itemArray[this.data.itemArrayIndex]) : ''}`;
-        wx.showLoading();
+        
         let self = this;
+        if(self.data.isEnd) { return;}
+        wx.showLoading();
         return ajax.request((URL.index.list + param), {}, function(data){
             wx.hideLoading();
             if(pullDown){
@@ -203,7 +205,12 @@ Page({
      */
     onShow: function () {
        this.setData({
-           hideDialog: getApp().globalData.authSettingUserInfo
+            hideDialog: getApp().globalData.authSettingUserInfo,
+            itemArrayIndex: 0,
+            typeArrayIndex: 0,
+            page: 0,
+            list: [],
+            isEnd: false
        })
        if(!this.data.newRoute){
             autoLogin().then(data => {

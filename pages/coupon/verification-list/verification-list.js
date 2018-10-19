@@ -131,8 +131,10 @@ Page({
 
     getList(pullDown){
         let param = `?shopId=${storage.get('shopId')}&page=${this.data.page+1}&limit=20`;
-        wx.showLoading();
+       
         let self = this;
+        if(self.data.isEnd) return;
+        wx.showLoading();
         return ajax.request((URL.verification.list + param), {}, function(data){
             wx.hideLoading();
             if(pullDown){
