@@ -29,7 +29,7 @@ Component({
         this.setData({
             wxShareData: {  
                 title: this.data.item.couponDesc,
-                path: '/pages/index/index?$route=' + encodeURIComponent(`/pages/coupon/index?id=${this.data.item.id}`),
+                path: `/pages/coupon/index?id=${this.data.item.id}`,  //'/pages/index/index?$route=' + encodeURIComponent(`/pages/coupon/index?id=${this.data.item.id}`),
                 imageUrl: `${getApp().globalData.imgHost}${this.data.item.couponImgURL}`
             }
         })

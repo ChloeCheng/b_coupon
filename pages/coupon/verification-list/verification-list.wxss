@@ -126,11 +126,19 @@ page{
 }
 
 .item-title{
-    font-size: 30rpx;
-    color: #222;
-    font-weight: bold;
+    font-size:30rpx;
+    color:#222;
+    font-weight:bold;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    width:420rpx;
+    text-align:right;
+    float:right;
+    clear: both;
 }
 
 .item-id{
     font-size: 22rpx;
+    clear: both;
 }

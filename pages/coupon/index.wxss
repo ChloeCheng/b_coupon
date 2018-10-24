@@ -5,7 +5,8 @@ page{
 }
 .container{
   padding:0 20rpx;
-  margin-top:60rpx;  
+  margin-top:100rpx;  
+  position: relative;
 }
 
 .coupon-detail{
@@ -62,19 +63,29 @@ page{
 }
 
 .coupon-detail-text{
-  display: flex;
-  color: #222;
-  font-size: 26rpx;
-  padding: 0 30rpx;
-  height:96rpx;
-  line-height: 96rpx;
+  display:inline-block;
+  color:#666;
+  font-size:24rpx;
+  padding:0 26rpx 0 18rpx;
+  height:46rpx;
+  line-height:46rpx;
+  position:absolute;
+  left:-2rpx;
+  border:1rpx solid #ececec;
+  top:-70rpx;
+  border-radius:0rpx 60rpx 60rpx 0;
+  background:rgb(237,232,236);
+    
 }
 .coupon-detail-text text{
   flex: 1;
 }
 
 .coupon-detail-text view{
-  font-size: 24rpx;
+  font-size: 22rpx;
+  display: inline-block;
+  transform: rotate(180deg);
+  margin-right: 6rpx;
 }
 .item-desc{
  

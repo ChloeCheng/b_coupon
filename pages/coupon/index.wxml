@@ -1,5 +1,10 @@
 <!--index.wxml-->
 <view class="container">
+   <view class="coupon-detail-text" bindtap="gotoHome">
+              <view class="iconfont icon-left"></view>
+              <text>我是商家</text>
+             
+   </view>
    <view class="coupon-detail">
         <text class="coupon-type">{{couponObj.couponType}}</text>
         <text class="coupon-title">{{couponObj.couponName}}</text>
@@ -14,10 +19,7 @@
            </text>
         </view>
         <image class="coupon-image" wx:if="{{couponObj.couponImgURL}}" src="https://z.mln.ren/upload/BigImage{{couponObj.couponImgURL}}" mode="aspectFit"></image>
-        <!--view class="coupon-detail-text" bindtap="gotoDetail">
-            <text>查看此优惠券详情</text>
-            <view class="iconfont icon-left"></view>
-        </view-->
+       
         <view class="item-desc">
           <text>服务项目：{{couponObj.couponItem}}</text>
           <text>适用地区：{{couponObj.usedRange}}</text>

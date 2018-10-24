@@ -135,8 +135,8 @@ Page({
        
     },
 
-    gotoDetail(){
-        router.routeTo('/pages/coupon/detail/detail');
+    gotoHome(){
+        router.reLaunch('/pages/index/index');
     },
 
     gotoCPort(){
