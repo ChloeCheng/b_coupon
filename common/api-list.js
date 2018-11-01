@@ -19,6 +19,10 @@ let URL = {
     verification: {
         code: 'https://z.mln.ren/api/couponGiveOutRecord/front/usecouponrecord',
         list: 'https://z.mln.ren/api/couponGiveOutRecord/front/shopcouponrecord',
+    },
+    shop: {
+        list: 'https://z.mln.ren/api/shopAccount/front/getuncheckedaccount',
+        audit: 'https://z.mln.ren/api/shopAccount/front/passshopaccount'
     }
 }
 

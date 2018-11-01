@@ -41,7 +41,9 @@ page{
    text-align: center;
    margin-top: 30rpx;
 }
-
+.get-coupon-overtime{
+  background: #999;
+}
 
 .coupon-use-time{
   

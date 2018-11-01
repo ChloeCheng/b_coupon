@@ -141,14 +141,33 @@ picker{
 
 
 .verification-coupon{
-    position: fixed;
-    height: 108rpx;
-    line-height: 108rpx;
-    border-radius: 10rpx;
-    width: 100%;
-    bottom: 0rpx;
-    text-align: center;
-    color: #fff;
-    font-size: 46rpx;
-    background: #fc5f7c;
+    position:fixed;
+    height:80rpx;
+    line-height:80rpx;
+    border-radius:40rpx;
+    width:300rpx;
+    bottom:30rpx;
+    text-align:center;
+    color:#fff;
+    font-size:32rpx;
+    background:#fc5f7c;
+    left:50%;
+    transform:translateX(-50%);
+  }
+
+
+  .store-income{
+    position:fixed;
+    bottom:33rpx;
+    right:54rpx;
+    background:#ddd;
+    border-radius:100rpx;
+    width:90rpx;
+    height:68rpx;
+  }
+
+  .store-income image {
+      width: 48rpx;
+      height: 48rpx;
+      margin: 10rpx 20rpx;
   }

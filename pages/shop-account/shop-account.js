@@ -17,7 +17,12 @@ Page({
         noData: false,
         dataResponse: false,
         list: [
-            
+            /*{
+                couponName: "法拉利专用洗车券",
+                id: "0ffbd3ea-6e44-41d8-b040-6f7df801f424",
+                usedTime: "2018-10-12 00:00:00",
+                verificationName: 'coco'
+            }*/
         ],
         tabs: [
             {name: '全部',id: 'ALL', data: [], pageStart: 0, isEnd: false, loading: false},
@@ -31,19 +36,13 @@ Page({
         typeArray: ['全部', '免费券', '代金券', '减免券'],  //分类
         typeArrayIndex: 0,
         isEnd: false,
-        page: 0,
-        newRoute: false,
-        showStore: false, //店长展示审核入口
+        page: 0
     },
     gotoSearchSuggest(){
       router.routeTo('/pages/search/search');
     },
     gotoAddCoupon(){
       router.routeTo('/pages/coupon/verification-way/verification-way');
-    },
-    gotoStore(){
-      router.routeTo('/pages/shop-account/shop-account');
- 
     },
     bindPickerChangeForItem(e){
         this.setData({
@@ -84,13 +83,6 @@ Page({
         });
         // console.log(index)
     },
-    handleDoubtTap(){
-        wx.showModal({
-            content: '1、被邀请的好友自动加入你的团队成为你的队员\r\n2、队员每推广一单，您将额外获得此单收益的10%（您的等级越高，比例越高），队员的收益不受影响\r\n3、自2018年6月14日0点之后的订单才贡献团队收益',
-            showCancel: false
-        });
-    },
-
    /**
      * 洗车/保养/全部
      */
@@ -138,35 +130,82 @@ Page({
     },
 
     getList(pullDown){
-        let param = `?shopid=${storage.get('shopId')}&page=${this.data.page+1}&limit=20${this.data.itemArrayIndex > 0 ? ('&couponType=' + this.data.itemArray[this.data.itemArrayIndex]) : ''}`;
-        
+        let param = `?shopId=${storage.get('shopId')}&status=-1`;
+       
         let self = this;
-        if(self.data.isEnd) { return;}
+       
         wx.showLoading();
-        return ajax.request((URL.index.list + param), {}, function(data){
+        return ajax.request((URL.shop.list + param), {}, function(data){
             wx.hideLoading();
-            if(pullDown){
-                wx.stopPullDownRefresh();
-            }
+           
             if(data.isSuccess === true){
-                if(data.data.length < 20){
-                    self.setData({
-                        isEnd: true
-                    }); 
-                }
-                let list = data.data;
-                list.forEach(item=>{
-                    item.usefulEndTime = item.usefulEndTime.split(' ')[0]; // formatTime.formatTime(new Date(item.coupon.usefulEndTime));
-                });
                 self.setData({
-                    page: self.data.page + 1,
-                    list: self.data.list.concat(list)
+                    list: self.data.list.concat(data.data)
                 });
                return self.data.list;
             }
            
         })
 
+    },
+
+    auditInfo(index, item, status, lock){
+        let param = `?shopId=${item.waiterShopId}&accountid=${item.accountCustomerId}&status=${status}${lock?('&islock=' + lock):''}`;
+       
+        let self = this;
+       
+        wx.showLoading();
+        return ajax.request((URL.shop.audit + param), {}, function(data){
+            wx.hideLoading();
+           
+            if(data.code === 0){
+               
+                let list = self.data.list;
+                if(lock) {
+                    setTimeout(function(){
+                        wx.showToast({
+                            title: '锁定成功!',
+                            icon: 'success',
+                            duration: 1500
+                        });
+                    },200)
+                    list.splice(index, 1);
+                } else {
+                    wx.showToast({
+                        title: '审核成功!',
+                        icon: 'success',
+                        duration: 1500
+                    });
+                    list.forEach(itemTmp=>{
+                        if(itemTmp.accountCustomerId === item.accountCustomerId) {
+                            itemTmp.shopAccountStatus = status;
+                        }
+                    });
+                }
+                
+
+                self.setData({
+                    list: list
+                }); 
+            }
+           
+        })
+
+    },
+
+    passBtn(e){
+      const {currentTarget:{dataset: {item}, index}} = e;
+     
+      this.auditInfo(index, item, 2);
+      // console.log(item)
+    },
+    denyBtn(e){
+        const {currentTarget:{dataset: {item}, index}} = e;
+        this.auditInfo(index, item, 100);
+    },
+    stopBtn(e) {
+        const {currentTarget:{dataset: {item}, index}} = e;
+        this.auditInfo(index, item, -1, 1);
     },
 
     /**
@@ -176,13 +215,7 @@ Page({
         // this.getServerConfig(); 
         let query = parseWeChatQuery(options)
         // wx.hideShareMenu();
-        if(query && query.$route){
-            this.setData({
-                newRoute: true
-            })
-            const route = decodeURIComponent(query.$route);
-            router.routeTo(route); 
-        }
+        
        
     },
 
@@ -209,33 +242,15 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-       this.setData({
-            hideDialog: getApp().globalData.authSettingUserInfo,
-            itemArrayIndex: 0,
-            typeArrayIndex: 0,
-            page: 0,
-            list: [],
-            isEnd: false,
-            showStore: (storage.get('shopAccountPosition') == 1 ? true : false)
-       })
-       if(!this.data.newRoute){
-            autoLogin().then(data => {
-                if(data.login) {
-                    this.getList();
-                }
-                
-            })
-       }
-       
+        this.getList();
+        
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-        this.setData({
-            newRoute: false
-        })
+
     },
 
     /**

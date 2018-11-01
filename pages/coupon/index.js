@@ -14,7 +14,8 @@ Page({
     data: {
        useBtn: false, //立即使用按钮
        couponObj: {},   // 券详情
-       hideDialog: false
+       hideDialog: false,
+       hasOverTime: false
     },
 
 
@@ -103,7 +104,8 @@ Page({
                 obj.usefulEndTime = obj.usefulEndTime.split(' ')[0]; //formatTime.formatTime(new Date(obj.usefulEndTime));
 
                 self.setData({
-                    couponObj: obj
+                    couponObj: obj,
+                    hasOverTime: (new Date().getTime() > new Date(data.data.usefulEndTime).getTime()) ? true : false
                 });
 
                

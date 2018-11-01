@@ -1,0 +1,39 @@
+<!--index.wxml-->
+
+<view class="container">
+
+      <view  class="box-item">
+        <block wx:for="{{list}}"  wx:key="{{item.id}}">
+            <view class="item">
+               <view class="item-head">
+                 <image src="{{item.isLockedOut? '/assets/icons/default_disable.png' : '/assets/icons/default_active.png'}}" mode="aspectFill"></image>
+               </view>
+               <view class="item-left">
+                  <text class="name">{{item.customerName}}</text>
+                  <text  wx:if="{{item.shopAccountStatus != 2}}" class="item-sign">待审核</text>
+                  <text class="mobile">{{item.mobile}}</text>
+               </view>
+                <view class="item-right">
+                  <view wx:if="{{item.shopAccountStatus != 2}}" class="btn-pass" bindtap="passBtn" data-item="{{item}}" data-index="{{index}}">通过</view>
+                  <view wx:if="{{item.shopAccountStatus != 2}}"  class="btn-deny" bindtap="denyBtn" data-item="{{item}}"  data-index="{{index}}">拒接</view>
+                  <view wx:if="{{item.shopAccountStatus === 2}}"  class="btn-deny" bindtap="stopBtn" data-item="{{item}}"  data-index="{{index}}">停用</view>
+
+               </view>
+            </view>
+        </block>
+         <!--view wx:if="{{!isEnd}}" class="loading-text">
+            <image src="http://ms.vpimg1.com/upload/actpics/cps/0/2018/05/21/109/q47xstax5wp4l2q.gif" mode="aspectFill"></image>
+            努力加载中...
+        </view>
+        <view wx:if="{{isEnd && (list.length > 0)}}" class="loading-text">
+            亲，没有更多记录了～
+        </view-->
+        <view wx:if="{{(list.length===0)}}" class="refresh">
+            <image src="https://a.vpimg3.com/upload/vtd/creatives/20180515/imageuploadrandom/1526382940441.png" mode="aspectFill"></image>
+            <text>{{item.emptyText || '亲，暂无店员提交审核～'}}</text>
+        </view>
+     </view>
+  
+</view>
+
+

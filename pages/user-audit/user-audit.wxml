@@ -1,5 +1,5 @@
 <view>
-    <view class="audit-info" wx:if="{{!auditing}}">
+    <view class="audit-info" wx:if="{{!auditing && !lock}}">
        <text class="audit-info-title">我们需要先对您的身份进行审核</text>
       
       <view class="audit-info-block">
@@ -29,6 +29,11 @@
     <view class="audit-ing" wx:if="{{auditing}}">
        <text class="audit-ing-title">信息审核中</text>
        <text class="audit-ing-desc">我们正在紧急审核您的信息，请耐心等待</text>
+    </view>
+
+    <view class="audit-ing" wx:if="{{lock}}">
+       <text class="audit-ing-title">已停用</text>
+       <text class="audit-ing-desc">如有疑问请联系店长～</text>
     </view>
 
 </view>

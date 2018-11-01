@@ -9,7 +9,8 @@
         <text class="coupon-type">{{couponObj.couponType}}</text>
         <text class="coupon-title">{{couponObj.couponName}}</text>
         <!--view class="get-coupon" wx:if="{{!useBtn && couponObj.id}}" bindtap="getCoupon">领取</view-->
-          <navigator class="get-coupon" target="miniProgram" open-type="navigate" app-id="wx0c196d8ed37cc07e" path="/pages/coupon/index?id={{couponObj.id}}&get=true" extra-data="" version="release">领取</navigator>
+          <navigator wx:if="{{!hasOverTime}}" class="get-coupon" target="miniProgram" open-type="navigate" app-id="wx0c196d8ed37cc07e" path="/pages/coupon/index?id={{couponObj.id}}&get=true" extra-data="" version="release">领取</navigator>
+        <view class="get-coupon get-coupon-overtime" wx:if="{{hasOverTime}}">优惠券已过期</view>
 
         <view class="use-coupon" bindtap="gotoCode"  wx:if="{{useBtn}}">立即使用</view>
         <view class="coupon-use-time">

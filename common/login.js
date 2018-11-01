@@ -88,6 +88,7 @@ function loginAndgetAndit(callback){
         if(data.code === 0) {
           storage.setSync('userId',  data.entity.id);
           storage.setSync('shopId',  (data.entity.shop && data.entity.shop.id) || '');
+          storage.setSync('shopAccountPosition',  (data.entity.shopAccount && data.entity.shopAccount.shopAccountPosition) || '');
           storage.setSync('waiterId',  (data.entity.shop && data.entity.shop.waiterId) || '');
           let currentPage = getCurrentPages()[(getCurrentPages().length-1)];
            if (data.entity.shopAccountStatus === 1 || data.entity.shopAccountStatus === 0){  //审核中
@@ -97,7 +98,9 @@ function loginAndgetAndit(callback){
              callback && callback()
             }
           } else if (data.entity.shopAccountStatus === 2){  //审核通过
-            if (currentPage.route !== 'pages/index/index'){
+            if(data.entity.shopAccount.isLockedOut && currentPage.route !== 'pages/user-audit/user-audit') {
+              router.routeTo('pages/user-audit/user-audit?lock=1');
+            } else if ( !data.entity.shopAccount.isLockedOut && currentPage.route !== 'pages/index/index'){
               router.routeTo('pages/index/index');
             } else {
              callback && callback()

@@ -14,6 +14,7 @@ Page({
      */
     data: {
         auditing: false,
+        lock: false,
         merchantCode: '', //商户编号
         name: '', //申请人姓名
         mobileNum: '',  // 手机号
@@ -158,7 +159,8 @@ Page({
       let option = getCurrentPages()[(getCurrentPages().length-1)].options;  
       console.log(option)
       this.setData({
-        auditing: option.audit == 1 ? true : false
+        auditing: option.audit == 1 ? true : false,
+        lock: option.lock == 1 ? true : false
       })
     },
 

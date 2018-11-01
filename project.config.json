@@ -33,13 +33,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 0,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "user-audit",
 					"pathName": "pages/user-audit/user-audit",
-					"query": ""
+					"query": "audit=1"
 				},
 				{
 					"id": 1,
@@ -70,6 +70,12 @@
 					"name": "skip",
 					"pathName": "pages/index/index",
 					"query": "$route=%2Fpages%2Fcoupon%2Findex%3Fid%3Dcec840a2-4642-4946-b7f1-07212f954a28"
+				},
+				{
+					"id": -1,
+					"name": "shop-account",
+					"pathName": "pages/shop-account/shop-account",
+					"query": ""
 				}
 			]
 		}

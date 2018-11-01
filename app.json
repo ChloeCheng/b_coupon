@@ -9,7 +9,8 @@
     "pages/coupon/verification-result/verification-result",
     "pages/coupon/verification-list/verification-list",
     "pages/coupon/detail/detail",
-    "pages/user-audit/user-audit"
+    "pages/user-audit/user-audit",
+    "pages/shop-account/shop-account"
   ],
   "window":{
     "backgroundTextStyle":"light",
