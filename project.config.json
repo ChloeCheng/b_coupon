@@ -39,7 +39,7 @@
 					"id": 0,
 					"name": "user-audit",
 					"pathName": "pages/user-audit/user-audit",
-					"query": "audit=1"
+					"query": "lock=1"
 				},
 				{
 					"id": 1,

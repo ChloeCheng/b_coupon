@@ -5,14 +5,17 @@
       <view  class="box-item">
         <block wx:for="{{list}}"  wx:key="{{item.id}}">
             <view class="item">
-               <view class="item-left">
-                  <text>{{item.expenseTime}}</text>
-                  <text>{{item.expenseShopAccountName}}</text>
+               <view class="item-row-1">
+                   <text class="item-title">{{item.coupon.couponName}}</text>
+                   <text class="item-row-1-2" >{{item.expenseTime}}</text>
                </view>
-                <view class="item-right">
-                  <text class="item-title">{{item.coupon.couponName}}</text>
-                  <text class="item-id">{{item.recordCode}}</text>
+               <view  class="item-row-2">
+                  <text>券码：{{item.recordCode}}</text>
                </view>
+                <view  class="item-row-3">
+                  <text>核销者：{{item.expenseShopAccountName}}</text>
+               </view>
+               <image  class="item-icon" src="/assets/icons/had_verification.png" mode="aspectFill"></image>
             </view>
         </block>
          <view wx:if="{{!isEnd}}" class="loading-text">

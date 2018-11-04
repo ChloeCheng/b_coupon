@@ -54,12 +54,19 @@
 
 .audit-ing{
    padding: 120rpx 20rpx 0;
+   text-align: center;
+}
+.audit-ing image{
+    width: 200rpx;
+    height: 200rpx;
+    margin: 0 auto;
 }
 .audit-ing-title{
     font-size:36rpx;
     color:#666;
     display: block;
     text-align: center;
+    margin-top: 60rpx;
 }
 .audit-ing-desc{
     margin-top: 30rpx;

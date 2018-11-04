@@ -27,11 +27,13 @@
     </view>
 
     <view class="audit-ing" wx:if="{{auditing}}">
+       <image src="/assets/icons/auditing.png" mode="aspectFill"/>
        <text class="audit-ing-title">信息审核中</text>
        <text class="audit-ing-desc">我们正在紧急审核您的信息，请耐心等待</text>
     </view>
 
     <view class="audit-ing" wx:if="{{lock}}">
+       <image src="/assets/icons/stop.png" mode="aspectFill"/>
        <text class="audit-ing-title">已停用</text>
        <text class="audit-ing-desc">如有疑问请联系店长～</text>
     </view>
